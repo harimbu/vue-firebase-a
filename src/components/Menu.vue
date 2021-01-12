@@ -1,8 +1,18 @@
 <template lang="">
-  <v-list>
+  <div>
+    <v-list-item>
+      <v-list-item-content>
+        <v-list-item-title class="title">Hello Vue</v-list-item-title>
+        <v-list-item-subtitle>vuetify & firebase</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+
+    <v-divider></v-divider>
+
+    <v-list>
       <v-list-group
-        v-for="item in items"
-        :key="item.title"
+        v-for="(item, i) in items"
+        :key="i"
         v-model="item.active"
         :prepend-icon="item.icon"
         no-action
@@ -14,17 +24,19 @@
         </template>
 
         <v-list-item
-          v-for="child in item.subItems"
-          :key="child.title"
-          :to="child.to"
+          v-for="(subItem, j) in item.subItems"
+          :key="j"
+          :to="subItem.to"
           link
         >
           <v-list-item-content>
-            <v-list-item-title v-text="child.title"></v-list-item-title>
+            <v-list-item-title v-text="subItem.title"></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list-group>
+
     </v-list>
+  </div>
 </template>
 <script>
 export default {
